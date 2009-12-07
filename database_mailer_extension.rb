@@ -29,7 +29,5 @@ class DatabaseMailerExtension < Radiant::Extension
   end
   
   def deactivate
-    admin.tabs.remove "Database Mailer"
   end
-  
 end

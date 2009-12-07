@@ -6,7 +6,7 @@ About
 
 A [Radiant][rd] Extension by [Aissac][ai] that adds database persistence to emailed forms. It works on top of the Radiant [Mailer Extension][rme] and the fields recorded to the database are user defined. The extension adds a tab to the Radiant admin interface allowing you to browse saved records.
 
-Tested on Radiant 0.7.1 and 0.8.
+Tested on Radiant 0.7.1, 0.8 and 0.9 RC1.
 
 Features
 ---
@@ -25,8 +25,7 @@ Radiant Database Mailer Extension has three dependecies, the Radiant Mailer Exte
 
 Install the `mailer` extension:
 
-    git submodule add git://github.com/radiant/radiant-mailer-extension.git\
-      vendor/extensions/mailer
+    git clone git://github.com/radiant/radiant-mailer-extension.git vendor/extensions/mailer
 
 ###Note
 
@@ -34,8 +33,7 @@ At the time being you will need Aissac's version of the [Radiant Mailer Extensio
 
 the `will_paginate` gem/plugin:   
 
-    git submodule add git://github.com/mislav/will_paginate.git\
-      vendor/plugins/will_paginate
+    git clone git://github.com/mislav/will_paginate.git vendor/plugins/will_paginate
     
 or
 
@@ -43,8 +41,7 @@ or
 
 and the `paperclip` gem/plugin 
 
-    git submodule add git://github.com/thoughtbot/paperclip.git \
-      vendor/plugins/will_paginate
+    git clone git://github.com/thoughtbot/paperclip.git vendor/plugins/paperclip
 
 or
 
@@ -60,8 +57,7 @@ Next edit `config/environment.rb` and add desired fields to be recorded:
 
 And finally add the [Database Mailer Extension][rdme]:
 
-    git submodule add git://github.com/Aissac/radiant-database-mailer-extension.git\
-      vendor/extensions/database_mailer
+    git clone git://github.com/Aissac/radiant-database-mailer-extension.git vendor/extensions/database_mailer
 
 Migrate and update the extension:
 
@@ -70,11 +66,11 @@ Migrate and update the extension:
 
 ###Note
 
-To get the Radiant 0.7.1 version tag you need to:
+The git branches hold stable versions of the extension for older version of Radiant CMS. To checkout one of these branches:
 
-    cd vendor/extensions/database_mailer/
-    git checkout v0.7
-
+    git clone git://github.com/Aissac/radiant-database-mailer-extension.git vendor/extensions/database_mailer
+    cd vendor/extensions/database_mailer
+    git checkout -b <branch-name> origin/<remote-branch-name>
 
 Configuration
 ---
@@ -140,11 +136,13 @@ Create an `email` page part (to take advantage of the blob field):
 Contributors
 ---
 
-* Cristi Duma
-* Istvan Hoka
+* Cristi Duma ([@cristi_duma][cd])
+* Istvan Hoka ([@ihoka][ih])
 
 [rd]: http://radiantcms.org/
 [ai]: http://www.aissac.ro/
 [rme]: http://github.com/radiant/radiant-mailer-extension
 [arme]: http://github.com/Aissac/radiant-mailer-extension
 [rdme]: http://blog.aissac.ro/radiant/database-mailer-extension/
+[cd]: http://twitter.com/cristi_duma
+[ih]: http://twitter.com/ihoka
