@@ -19,6 +19,10 @@ class DatabaseMailerExtension < Radiant::Extension
       include DatabaseMailerProcessing
       alias_method_chain :process_mail, :database
     end
+    MailerProcess.class_eval do
+      include DatabaseMailerProcessing
+      alias_method_chain :process_mail, :database
+    end
     admin.tabs.add "Database Mailer", "/admin/form_datas", :after => "Layouts", :visibility => [:all]
     
     Mime::Type.register "application/vnd.ms-excel", :xls
