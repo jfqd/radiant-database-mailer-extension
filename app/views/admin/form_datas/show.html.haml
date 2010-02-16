@@ -1,4 +1,3 @@
-- body_classes << "reversed"
 
 %h1 Form Data
 
@@ -7,7 +6,7 @@
     #tabs.tabs
       %a#details_lnk.tab.here{ :href => "#", :onclick => "show_details();" }
         %span details
-      - unless @form_data.form_data_assets.empty?
+      - unless @form_data
         %a#attachments_lnk.tab{ :href => "#", :onclick => "show_attachments();" }
           %span attachments
     #pages.pages
@@ -28,7 +27,7 @@
           %tr
             %th Exported
             %td= @form_data.exported? ? date_format(@form_data.exported) : "no"
-      - unless @form_data.form_data_assets.empty?
+      - unless @form_data
         #attachments.page{ :style => "display:none;"}
           %table.attachments
             %thead
