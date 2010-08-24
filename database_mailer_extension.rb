@@ -5,14 +5,6 @@ class DatabaseMailerExtension < Radiant::Extension
   description "Save fields from mailer forms to the database."
   url "http://blog.aissac.ro/radiant/database-mailer-extension/"
   
-  define_routes do |map|
-    map.namespace :admin do |admin|
-      admin.resources :form_datas do |form_data|
-        form_data.resources :form_data_assets
-      end
-    end
-  end
-  
   def activate
     throw "MailerExtension must be loaded before DatabaseMailerExtension" unless defined?(MailerExtension)
     MailController.class_eval do
@@ -23,6 +15,7 @@ class DatabaseMailerExtension < Radiant::Extension
     tab "Content" do
       add_item "Database Mailer", "/admin/form_datas"
     end
+        
     Mime::Type.register "application/vnd.ms-excel", :xls
   end
   
