@@ -1,9 +1,10 @@
 require_dependency 'application_controller'
+require 'radiant-database_mailer-extension/version'
 
 class DatabaseMailerExtension < Radiant::Extension
-  version "1.0"
-  description "Save fields from mailer forms to the database."
-  url "http://blog.aissac.ro/radiant/database-mailer-extension/"
+  version     RadiantDatabaseMailerExtension::VERSION
+  description RadiantDatabaseMailerExtension::DESCRIPTION
+  url         RadiantDatabaseMailerExtension::URL
   
   def activate
     throw "MailerExtension must be loaded before DatabaseMailerExtension" unless defined?(MailerExtension)
