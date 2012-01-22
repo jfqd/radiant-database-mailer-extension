@@ -1,5 +1,5 @@
 require_dependency 'application_controller'
-require 'radiant-database_mailer-extension/version'
+require 'radiant-database_mailer-extension'
 
 class DatabaseMailerExtension < Radiant::Extension
   version     RadiantDatabaseMailerExtension::VERSION
@@ -7,7 +7,7 @@ class DatabaseMailerExtension < Radiant::Extension
   url         RadiantDatabaseMailerExtension::URL
   
   def activate
-    throw "MailerExtension must be loaded before DatabaseMailerExtension" unless defined?(MailerExtension)
+    raise "MailerExtension must be loaded before DatabaseMailerExtension" unless defined?(MailerExtension)
     MailController.class_eval do
       include DatabaseMailerProcessing
       alias_method_chain :process_mail, :database
@@ -17,7 +17,6 @@ class DatabaseMailerExtension < Radiant::Extension
       include DatabaseMailerProcessing
       alias_method_chain :process_mail, :database
     end
-    admin.tabs.add "Database Mailer", "/admin/form_datas", :after => "Layouts", :visibility => [:all]
 
     tab "Content" do
       add_item "Database Mailer", "/admin/form_datas"
