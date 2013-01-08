@@ -1,4 +1,4 @@
-require 'fastercsv'
+require RUBY_VERSION < "1.9" ? 'fastercsv' : 'csv'
 require 'spreadsheet'
 
 class FormData < ActiveRecord::Base
@@ -47,8 +47,9 @@ class FormData < ActiveRecord::Base
   
   def self.export_csv(params, selected_export_columns, exported_at, export_all=false)
     @items = find_for_export(params, export_all)
+    csv_handler = RUBY_VERSION < "1.9" ? FasterCSV : CSV
     
-    FasterCSV.generate do |csv|
+    csv_handler.generate do |csv|
       csv << selected_export_columns.map{|k| k.capitalize}
       @items.each do |ei|
         csv << selected_export_columns.map do |k|

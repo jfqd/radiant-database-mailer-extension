@@ -1,6 +1,7 @@
 class Admin::FormDatasController < ApplicationController
 
-  require 'fastercsv'
+  require RUBY_VERSION < "1.9" ? 'fastercsv' : 'csv'
+  
   before_filter :attach_assets
   LIST_PARAMS_BASE = [:page, :sort_by, :sort_order]
   EXPORT_COLUMNS = FormData::SORT_COLUMNS.sort - ["exported"] + ["blob"]
