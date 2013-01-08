@@ -1,5 +1,5 @@
 module RadiantDatabaseMailerExtension
-  VERSION     = '1.0.3'
+  VERSION     = '1.0.4'
   SUMMARY     = %q{Database mailer for Radiant CMS}
   DESCRIPTION = %q{Save fields from mailer forms to the database.}
   URL         = "http://blog.aissac.ro/radiant/database-mailer-extension/"
