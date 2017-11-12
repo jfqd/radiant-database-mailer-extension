@@ -22,5 +22,7 @@ Gem::Specification.new do |s|
   # s.executables   = Dir['bin/*'] - ignores
   s.require_paths = ["lib"]
   
-  s.add_dependency 'radiant-mailer-extension', '~> 1.0.3'
+  # s.add_dependency 'radiant-mailer-extension', '~> 1.1'
+  # s.add_dependency "json_fields"
+  s.add_dependency "spreadsheet"
 end

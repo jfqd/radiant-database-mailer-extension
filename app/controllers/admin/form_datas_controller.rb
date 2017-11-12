@@ -1,12 +1,17 @@
 class Admin::FormDatasController < ApplicationController
 
+  only_allow_access_to :index, :show, :destroy,
+    :when => [:database_mailer],
+    :denied_url => {:controller => 'welcome', :action => 'index'},
+    :denied_message => "See your administrator if you'd like to view this information"
+  
   require RUBY_VERSION < "1.9" ? 'fastercsv' : 'csv'
   
   before_filter :attach_assets
   LIST_PARAMS_BASE = [:page, :sort_by, :sort_order]
   EXPORT_COLUMNS = FormData::SORT_COLUMNS.sort - ["exported"] + ["blob"]
+  
   def index
-
     @urls = FormData.find_all_group_by_url
     filter_by_params(FormData::FILTER_COLUMNS)
     respond_to do |format|
@@ -19,29 +24,31 @@ class Admin::FormDatasController < ApplicationController
       
       format.csv {
         csv_string = FormData.export_csv(list_params, selected_export_columns, exported_at, !params[:include_all].blank?)
-        send_data csv_string, 
-         :type => "text/csv", 
-         :filename => "export_#{exported_at.strftime("%Y-%m-%d_%H-%M")}.csv", 
-         :disposition => 'attachment'
+        send_data csv_string,
+                  :type => "text/csv",
+                  :filename => "export_#{exported_at.strftime("%Y-%m-%d_%H-%M")}.csv",
+                  :disposition => 'attachment'
        }
        format.xls {
          xls_path = FormData.export_xls(list_params, selected_export_columns, exported_at, !params[:include_all].blank?)
          send_file xls_path,
-          :type => "application/vnd.ms-excel", 
-          :filename => "form_data_#{exported_at.strftime("%Y-%m-%d_%H-%M")}.xls", 
-          :disposition => 'attachment'
+                   :type => "application/vnd.ms-excel",
+                   :filename => "form_data_#{exported_at.strftime("%Y-%m-%d_%H-%M")}.xls",
+                   :disposition => 'attachment'
        }
      end
   end
   
   def show
     @form_data = FormData.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to admin_form_datas_path
   end
   
   def destroy
     @form_data = FormData.find(params[:id])
     @form_data.destroy
-    flash[:notice] = "Record deleted!"
+    flash[:notice] = I18n.t('mailer.record_created')
     redirect_to admin_form_datas_path
   end
   

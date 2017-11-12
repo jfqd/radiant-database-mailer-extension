@@ -1,0 +1,15 @@
+---
+de:
+  mailer_title: "Formular-Daten"
+  mailer:
+    exported: Exportiert
+    created_at: Erstellt
+    no_results: Keine Formular-Daten gefunden
+    destroy: Wollen Sie den Datensatz wirlich löschen?
+    details: Details
+    attachments: Anhänge
+    back: Zurück
+    field_name: Feldname
+    link: Link
+    thumbnail: Vorschau
+    record_created: Der Datensatz wurde erstellt

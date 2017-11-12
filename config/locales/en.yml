@@ -1,0 +1,15 @@
+---
+en:
+  mailer_title: "Mailer-Data"
+  mailer:
+    exported: Exported
+    created_at: Created at
+    no_results: No Results!
+    destroy: "Really delete record?"
+    details: Details
+    attachments: Attachments
+    back: Back
+    field_name: Fieldname
+    link: Link
+    thumbnail: Thumbnail
+    record_created: The records was created

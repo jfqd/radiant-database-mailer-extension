@@ -31,17 +31,17 @@ table.results
       :padding 2px 4px
       :text-shadow 1px 1px 0 #666666
       :color white
-      :font-size 90%
       &.created_at
-        :width 150px
-      &.url, &.exported
-        :width 200px
-      &.actions
-        :width 100px
+        :min-width 150px
+        padding-left: 9px !important
+        a
+        color: black
+        font-weight: bold
+      &.url
+        :min-width 200px
       a
         :text-shadow 1px 1px 0 #666666
         :color white
-        :font-size 90%
   tbody
     tr:hover
       :background-color #ecf4ff
@@ -50,24 +50,8 @@ table.results
       :padding 8px 4px
       :text-align left
       :vertical-align top
-      &.actions a
-        :color black
-        :text-decoration none
-        &:hover
-          :text-decoration underline
-  tfoot
-    th
-      :background-color #7E7E7E
-      :font-weight normal
-      :padding 2px 4px
-      :text-shadow 1px 1px 0 #666666
-      :color white
-      :font-size 90%
-      :vertical-align middle
-      a
-        :text-shadow 1px 1px 0 #666666
-        :color white
-        :font-size 90%
+      &.created_at
+        padding-left: 9px !important
 
 .pagination
   :text-align center
@@ -95,7 +79,8 @@ table.results
       
 #filtering
   position: relative
-  :height 35px
+  height: 35px
+  background: #7e7e7e
   a.expand
     :-moz-border-radius-bottomleft 6px
     :-moz-border-radius-bottomright 6px
@@ -111,7 +96,7 @@ table.results
     :cursor pointer
     :color white
     :text-decoration none
-    :font-size 80%
+    top: 4px
   .expanded a.expand
     :-moz-border-radius-topleft 6px
     :-moz-border-radius-topright 6px
@@ -123,6 +108,8 @@ table.results
     :-webkit-border-bottom-right-radius 0
     :background #7E7E7E url(/images/admin/metadata_toggle.png) no-repeat 92% -20px
 
+#expander
+  right: 100px
 #x_expander
   right: 0
 
@@ -130,7 +117,8 @@ table.results
   background-color: #7E7E7E
   z-index: 10
   position: absolute
-  top: 22px
+  right: 100px
+  top: 28px
   width: 350px
   :-moz-border-radius 6px
   :-webkit-border-radius 6px
@@ -205,9 +193,9 @@ table.export
 
 #show
   a.back
-    :color red
-    :font-size 80%
+    :color black
     :text-decoration none
+    font-size: 95%
     &:hover
       :text-decoration underline
   .page
@@ -223,7 +211,7 @@ table.export
       :padding 5px 10px
       :vertical-align top
   table.attachments
-    :width 700px
+    :width 100%
     tr
       :border-bottom 1px solid #ccc
     th
@@ -233,3 +221,18 @@ table.export
       :vertical-align top
     a
       :color black
+
+#show_buttons
+  background: white url(/images/admin/buttons_background.png) bottom repeat-x
+  padding: 12px 10px
+  -moz-border-radius: 8px
+  -webkit-border-radius: 8px
+  border-radius: 8px
+  -webkit-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15)
+  -moz-box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15)
+  box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.15)
+
+body.reversed
+  table
+    th
+      width: 100px

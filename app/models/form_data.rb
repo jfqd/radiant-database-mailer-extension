@@ -2,6 +2,12 @@ require RUBY_VERSION < "1.9" ? 'fastercsv' : 'csv'
 require 'spreadsheet'
 
 class FormData < ActiveRecord::Base
+  
+  # secure text fields
+  if defined?(CryptoMaster)
+    acts_as_secure crypto_provider: CryptoMaster,
+                   storage_type:    :text
+  end
 
   has_many :form_data_assets, :dependent => :destroy
 
