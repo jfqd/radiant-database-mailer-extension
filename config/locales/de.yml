@@ -12,4 +12,4 @@ de:
     field_name: Feldname
     link: Link
     thumbnail: Vorschau
-    record_created: Der Datensatz wurde erstellt
+    record_deleted: Der Datensatz wurde gelöscht

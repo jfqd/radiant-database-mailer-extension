@@ -48,7 +48,7 @@ class Admin::FormDatasController < ApplicationController
   def destroy
     @form_data = FormData.find(params[:id])
     @form_data.destroy
-    flash[:notice] = I18n.t('mailer.record_created')
+    flash[:notice] = I18n.t('mailer.record_deleted')
     redirect_to admin_form_datas_path
   end
   

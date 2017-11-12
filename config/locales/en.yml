@@ -12,4 +12,4 @@ en:
     field_name: Fieldname
     link: Link
     thumbnail: Thumbnail
-    record_created: The records was created
+    record_deleted: Record deleted
