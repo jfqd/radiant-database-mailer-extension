@@ -89,12 +89,12 @@ Adding fields to the `DATABASE_MAILER_COLUMNS` hash and re-running `rake radiant
 
 Look at the Mailer Extension README for information on how to configure mail delivery.
 
-If you set `save_to_database` to false in the Mailer config, saving to the database is skipped and just mail delivery takes place. Example (in the `mailer` page part):
+If you set `save_to_database` to true in the Mailer config, saving to the database will be processed. Example (in the `mailer` page part):
 
     subject: From the website of Whatever
     from: noreply@example.com
     redirect_to: /contact/thank-you
-    save_to_database: false
+    save_to_database: true
     recipients:
       - one@one.com
       - two@two.com
@@ -142,6 +142,14 @@ Create an `email` page part (to take advantage of the blob field):
       Email: <r:get name="email" />
       Message: <r:get name="message" />
     </r:mailer>
+
+== Replay stored form-data
+
+To fill a form with stored form-data just add a "email_json" page-part which only contains one radius-tag:
+
+  <r:mailer:to_json />
+  
+This will store the mailer data as json in the database and can then be used together with an url-token to replay stored form-data.
 
 Contributors
 ---
