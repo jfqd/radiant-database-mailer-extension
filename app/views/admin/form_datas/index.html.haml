@@ -10,6 +10,7 @@
         %tr
           %th.created_at= sortable_column_head t('mailer.created_at'), :created_at
           %th.url= sortable_column_head "URL", :url
+          %th.attachments= I18n.t('mailer.attachments')
           - each_data_column do |k|
             %th= sortable_column_head k.to_s.capitalize, k
           %th.exported= sortable_column_head t('mailer.exported'), :exported
@@ -19,6 +20,7 @@
           %tr
             %td.created_at= link_to date_format(si.created_at), admin_form_data_path(si)
             %td.url= link_to si.url, "#{si.url}?token=#{si.token}"
+            %td.attachments= si.form_data_assets.size
             = data_columns.map { |k| "<td>#{si.send(k)}</td>" }.join
             %td.exported= si.exported ? date_format(si.exported) : '-'
             %td.remove
