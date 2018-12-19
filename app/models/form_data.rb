@@ -25,7 +25,7 @@ class FormData < ActiveRecord::Base
   def self.form_paginate(params)
     options = {
       :page => params[:page],
-      :per_page => 10,
+      :per_page => Radiant::Config['database_mailer.per_page'] || 25,
     }
     if SORT_COLUMNS.include?(params[:sort_by]) && %w(asc desc).include?(params[:sort_order])
       options[:order] = "#{params[:sort_by]} #{params[:sort_order]}"

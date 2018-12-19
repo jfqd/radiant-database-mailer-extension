@@ -16,6 +16,8 @@ class DatabaseMailerExtension < Radiant::Extension
       alias_method_chain :process_mail, :database
     end
 
+    Radiant::Config['database_mailer.per_page']  ||= 50
+    
     Page.class_eval { include MailerTagsExtensions }
 
     tab "Content" do
