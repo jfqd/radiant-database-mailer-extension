@@ -22,7 +22,7 @@
             %td= link_to @form_data.url, "#{@form_data.url}?token=#{@form_data.token}"
           %tr
             %th Body
-            %td= simple_format(@form_data.blob)
+            %td= h(@form_data.blob)
           - data_columns.each do |dc|
             %tr
               %th= dc.to_s.capitalize
