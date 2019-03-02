@@ -27,7 +27,7 @@
               = link_to t('remove'), admin_form_data_path(si.id), :method => :delete, :confirm => t('mailer.destroy')
         - if @saved_items.empty?
           %tr
-            %td{:colspan => data_columns.size + 4}= t('mailer.no_results')
+            %td{:colspan => data_columns.size + 5}= t('mailer.no_results')
 
 #actions
   .pagination
